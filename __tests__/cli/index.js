@@ -270,14 +270,14 @@ describe('cli', () => {
       fs.writeFileSync(dbFile, JSON.stringify({ foo: [] }))
       setTimeout(() => {
         request.get('/foo').expect(200, done)
-      }, 1000)
+      }, 5000)
     })
 
     test('should watch routes file', done => {
       fs.writeFileSync(routesFile, JSON.stringify({ '/api/*': '/$1' }))
       setTimeout(() => {
         request.get('/api/posts').expect(200, done)
-      }, 1000)
+      }, 5000)
     })
   })
 
