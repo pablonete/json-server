@@ -18,6 +18,9 @@ jobs:
         npm install
       displayName: 'npm install'
     - script: |
+        netstat -a
+      displayName: 'netstat'         
+    - script: |
         npm test
       displayName: 'npm test'
     - task: PublishTestResults@2
@@ -43,6 +46,9 @@ jobs:
     - script: |
         npm install
       displayName: 'npm install'
+    - script: |
+        netstat -a
+      displayName: 'netstat'      
     - script: |
         npm test
       displayName: 'npm test'
