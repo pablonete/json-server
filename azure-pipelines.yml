@@ -20,6 +20,12 @@ jobs:
     - script: |
         npm test
       displayName: 'npm test'
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFiles: '**/junit.xml'
+        testRunTitle: Linux $(NODE_VERSION)
+      displayName: 'Publish test results'
+      condition: always()
 
 - job: Windows
   pool:
@@ -40,3 +46,9 @@ jobs:
     - script: |
         npm test
       displayName: 'npm test'
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFiles: '**/junit.xml'
+        testRunTitle: Windows $(NODE_VERSION)
+      displayName: 'Publish test results'
+      condition: always()

@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run build && cross-env NODE_ENV=test jest && npm run lint",
+    "test": "npm run build && cross-env NODE_ENV=test jest --reporters=default --reporters=jest-junit && npm run lint",
     "start": "run-p start:**",
     "start:babel-node": "babel-node src/cli/bin db.json -r routes.json",
     "start:webpack": "webpack -d --watch",
@@ -72,6 +72,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.1.3",
     "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
     "markdown-toc": "^1.2.0",
     "milligram": "^1.3.0",
     "mini-css-extract-plugin": "^0.4.4",
