@@ -9,7 +9,7 @@ const mkdirp = require('mkdirp')
 const rimraf = require('rimraf')
 const serverReady = require('server-ready')
 
-let PORT = 3100
+let PORT = 5000
 
 const middlewareFiles = {
   en: './../../__fixtures__/middlewares/en.js',
