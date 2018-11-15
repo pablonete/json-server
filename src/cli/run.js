@@ -191,7 +191,7 @@ module.exports = function(argv) {
         // Since lowdb uses atomic writing, directory is watched instead of file
         const watchedDir = path.dirname(source)
         let readError = false
-        fs.watch(watchedDir, (event, file) => {
+        fs.watchFile(watchedDir, (event, file) => {
           // https://github.com/typicode/json-server/issues/420
           // file can be null
           if (file) {
@@ -228,7 +228,7 @@ module.exports = function(argv) {
         // Watch routes
         if (argv.routes) {
           const watchedDir = path.dirname(argv.routes)
-          fs.watch(watchedDir, (event, file) => {
+          fs.watchFile(watchedDir, (event, file) => {
             if (file) {
               const watchedFile = path.resolve(watchedDir, file)
               if (watchedFile === path.resolve(argv.routes)) {
