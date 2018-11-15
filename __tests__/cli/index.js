@@ -267,7 +267,12 @@ describe('cli', () => {
     })
 
     test('should watch db file', done => {
-      fs.writeFileSync(dbFile, JSON.stringify({ foo: [] }))
+      fs.writeFileSync(dbFile, JSON.stringify({ foo: [] }), , function(err) {
+      if (err) {
+         res.status(500).jsonp({ error: 'Failed to write file' });
+      }
+      res.send("File write success");
+    })
       setTimeout(() => {
         request.get('/foo').expect(200, done)
       }, 1000)
