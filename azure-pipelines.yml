@@ -15,7 +15,7 @@ jobs:
         checkLatest: 'true'
       displayName: 'Install Node.js'
     - script: |
-        npm install
+        npm install -g npm@latest
       displayName: 'npm install'
     - script: |
         npm test
