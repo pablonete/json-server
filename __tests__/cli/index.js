@@ -267,15 +267,22 @@ describe('cli', () => {
     })
 
     test('should watch db file', done => {
-      fs.writeFileSync(dbFile, JSON.stringify({ foo: [] }))
+      const newDbContent = JSON.stringify({ foo: [] })
+      fs.writeFileSync(dbFile, newDbContent)
       setTimeout(() => {
+        assert.strictEqual(fs.readFileSync(dbFile, 'utf8'), newDbContent)
         request.get('/foo').expect(200, done)
       }, 1000)
     })
 
     test('should watch routes file', done => {
-      fs.writeFileSync(routesFile, JSON.stringify({ '/api/*': '/$1' }))
+      const newRoutesContent = JSON.stringify({ '/api/*': '/$1' })
+      fs.writeFileSync(routesFile, newRoutesContent)
       setTimeout(() => {
+        assert.strictEqual(
+          fs.readFileSync(routesFile, 'utf8'),
+          newRoutesContent
+        )
         request.get('/api/posts').expect(200, done)
       }, 1000)
     })
