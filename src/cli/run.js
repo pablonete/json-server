@@ -227,17 +227,11 @@ module.exports = function(argv) {
 
         // Watch routes
         if (argv.routes) {
-          const watchedDir = path.dirname(argv.routes)
-          fs.watch(watchedDir, (event, file) => {
-            if (file) {
-              const watchedFile = path.resolve(watchedDir, file)
-              if (watchedFile === path.resolve(argv.routes)) {
-                console.log(
-                  chalk.gray(`  ${argv.routes} has changed, reloading...`)
-                )
-                server && server.destroy(() => start())
-              }
-            }
+          fs.watch(argv.routes, (event, file) => {
+            console.log(
+              chalk.gray(`  ${argv.routes} has changed, reloading...`)
+            )
+            server && server.destroy(() => start())
           })
         }
       }
